@@ -11,8 +11,10 @@
 #include <Vcl.Menus.hpp>
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.DBCtrls.hpp>
+#include <Vcl.Dialogs.hpp>
+#include <Vcl.Buttons.hpp>
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TNotePadFRM : public TForm
 {
 __published:	// IDE-managed Components
 	TPanel *Panel1;
@@ -23,12 +25,20 @@ __published:	// IDE-managed Components
 	TMenuItem *N4;
 	TPanel *Panel2;
 	TPageControl *PageControl1;
-	TDBRichEdit *DBRichEdit1;
+	TFileOpenDialog *FileOpenDialog1;
+	TTabSheet *TabSheet1;
+	TTabSheet *TabSheet2;
+	TRichEdit *REDoc1;
+	TRichEdit *REDoc2;
+	TSpeedButton *btnAddDoc;
+	void __fastcall ShowFrm(TObject *Sender);
+	void __fastcall FrmRes(TObject *Sender);
+
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TNotePadFRM(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TNotePadFRM *NotePadFRM;
 //---------------------------------------------------------------------------
 #endif

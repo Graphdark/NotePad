@@ -130,7 +130,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="MainForm.cpp">
-            <Form>Form1</Form>
+            <Form>NotePadFRM</Form>
             <FormType>dfm</FormType>
             <DependentOn>MainForm.h</DependentOn>
             <BuildOrder>2</BuildOrder>
