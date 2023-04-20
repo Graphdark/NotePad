@@ -41,7 +41,7 @@ private:	// User declarations
 public:		// User declarations
 	__fastcall TNotePadFRM(TComponent* Owner);
 	int getDocNumb() const {return FdocNumb;}
-	int __property DocNumb = {read = getDocNumb};
+	int __property DocNumb = {read = getDocNumb, write = FdocNumb};
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TNotePadFRM *NotePadFRM;

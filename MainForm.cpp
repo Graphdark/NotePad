@@ -32,5 +32,10 @@ void __fastcall TNotePadFRM::btnAddDocClick(TObject *Sender)
 	tab->Parent = this;
 	tab->PageControl = PageControl1;
 	tab->Caption = "Doc" + IntToStr(DocNumb);
+	tab->Name = "Doc" + IntToStr(DocNumb);
+	DocNumb = DocNumb+1;
+	TRichEdit *re = new TRichEdit(this);
+	re->Parent = tab;
+    re->Align = alClient;
 }
 //---------------------------------------------------------------------------
