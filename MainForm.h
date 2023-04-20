@@ -16,6 +16,7 @@
 //---------------------------------------------------------------------------
 class TNotePadFRM : public TForm
 {
+	int FdocNumb = 3;
 __published:	// IDE-managed Components
 	TPanel *Panel1;
 	TMainMenu *MainMenu1;
@@ -33,10 +34,14 @@ __published:	// IDE-managed Components
 	TSpeedButton *btnAddDoc;
 	void __fastcall ShowFrm(TObject *Sender);
 	void __fastcall FrmRes(TObject *Sender);
+	void __fastcall btnAddDocClick(TObject *Sender);
 
 private:	// User declarations
+
 public:		// User declarations
 	__fastcall TNotePadFRM(TComponent* Owner);
+	int getDocNumb() const {return FdocNumb;}
+	int __property DocNumb = {read = getDocNumb};
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TNotePadFRM *NotePadFRM;

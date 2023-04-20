@@ -31,8 +31,6 @@ object NotePadFRM: TNotePadFRM
     Height = 242
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 8
-    ExplicitHeight = 57
     DesignSize = (
       635
       242)
@@ -77,6 +75,7 @@ object NotePadFRM: TNotePadFRM
         FDFFFEFDFDFFFEFDFDFFC49382FF000000030000000000000000000000019774
         67BECA9C8BFFCA9C8BFFC99C8AFFC99B89FFC99B8AFFCA9A88FFC89A88FFC999
         87FFC79887FFC89886FF927063BF000000020000000000000000}
+      OnClick = btnAddDocClick
     end
     object PageControl1: TPageControl
       Left = 1
@@ -86,8 +85,6 @@ object NotePadFRM: TNotePadFRM
       ActivePage = TabSheet1
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 33
-      ExplicitTop = 0
       object TabSheet1: TTabSheet
         Caption = 'Doc 1'
         object REDoc1: TRichEdit
@@ -106,8 +103,6 @@ object NotePadFRM: TNotePadFRM
           ParentFont = False
           TabOrder = 0
           Zoom = 100
-          ExplicitLeft = 80
-          ExplicitTop = -104
         end
       end
       object TabSheet2: TTabSheet
@@ -129,10 +124,6 @@ object NotePadFRM: TNotePadFRM
           ParentFont = False
           TabOrder = 0
           Zoom = 100
-          ExplicitLeft = 328
-          ExplicitTop = 40
-          ExplicitWidth = 185
-          ExplicitHeight = 89
         end
       end
     end

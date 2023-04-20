@@ -23,6 +23,14 @@ void __fastcall TNotePadFRM::ShowFrm(TObject *Sender)
 void __fastcall TNotePadFRM::FrmRes(TObject *Sender)
 {
 	btnAddDoc->Width = 23;
-    btnAddDoc->Left = REDoc1->Width - 15;
+	btnAddDoc->Left = REDoc1->Width - 15;
+}
+//---------------------------------------------------------------------------
+void __fastcall TNotePadFRM::btnAddDocClick(TObject *Sender)
+{
+	TTabSheet *tab = new TTabSheet(this);
+	tab->Parent = this;
+	tab->PageControl = PageControl1;
+	tab->Caption = "Doc" + IntToStr(DocNumb);
 }
 //---------------------------------------------------------------------------
