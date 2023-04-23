@@ -77,7 +77,7 @@ object NotePadFRM: TNotePadFRM
         87FFC79887FFC89886FF927063BF000000020000000000000000}
       OnClick = btnAddDocClick
     end
-    object PageControl1: TPageControl
+    object PageControl: TPageControl
       Left = 1
       Top = 1
       Width = 633
@@ -87,7 +87,7 @@ object NotePadFRM: TNotePadFRM
       TabOrder = 0
       object TabSheet1: TTabSheet
         Caption = 'Doc 1'
-        object REDoc1: TRichEdit
+        object _TabSheet1: TRichEdit
           Left = 0
           Top = 0
           Width = 625
@@ -108,7 +108,7 @@ object NotePadFRM: TNotePadFRM
       object TabSheet2: TTabSheet
         Caption = 'Doc 2'
         ImageIndex = 1
-        object REDoc2: TRichEdit
+        object _TabSheet2: TRichEdit
           Left = 0
           Top = 0
           Width = 625
@@ -135,20 +135,49 @@ object NotePadFRM: TNotePadFRM
       Caption = #1060#1072#1081#1083
       object N2: TMenuItem
         Caption = #1054#1090#1082#1088#1099#1090#1100
+        OnClick = N2Click
       end
       object N3: TMenuItem
         Caption = #1047#1072#1082#1088#1099#1090#1100
+        OnClick = N3Click
       end
       object N4: TMenuItem
         Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
+        OnClick = N4Click
+      end
+    end
+    object N5: TMenuItem
+      Caption = #1050#1086#1084#1072#1085#1076#1099
+      object N6: TMenuItem
+        Caption = #1042#1089#1090#1072#1074#1080#1090#1100' '#1080#1079#1086#1073#1088#1072#1078#1077#1085#1080#1077
+        OnClick = N6Click
       end
     end
   end
-  object FileOpenDialog1: TFileOpenDialog
-    FavoriteLinks = <>
-    FileTypes = <>
-    Options = []
-    Left = 128
-    Top = 16
+  object FDCon: TFDConnection
+    Params.Strings = (
+      'Database=E:\E21\Output_x86\Modules\HelpEditor.ehlp'
+      'DriverID=SQLite')
+    Connected = True
+    LoginPrompt = False
+    Left = 384
+    Top = 32
+  end
+  object fdq: TFDQuery
+    Connection = FDCon
+    Left = 456
+    Top = 40
+  end
+  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
+    Left = 264
+    Top = 32
+  end
+  object od: TOpenDialog
+    Left = 512
+    Top = 24
+  end
+  object sd: TSaveDialog
+    Left = 176
+    Top = 24
   end
 end

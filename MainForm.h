@@ -13,6 +13,27 @@
 #include <Vcl.DBCtrls.hpp>
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.Buttons.hpp>
+#include <Data.DB.hpp>
+#include <FireDAC.Comp.Client.hpp>
+#include <FireDAC.Comp.DataSet.hpp>
+#include <FireDAC.DApt.hpp>
+#include <FireDAC.DApt.Intf.hpp>
+#include <FireDAC.DatS.hpp>
+#include <FireDAC.Phys.hpp>
+#include <FireDAC.Phys.Intf.hpp>
+#include <FireDAC.Phys.SQLite.hpp>
+#include <FireDAC.Phys.SQLiteDef.hpp>
+#include <FireDAC.Phys.SQLiteWrapper.Stat.hpp>
+#include <FireDAC.Stan.Async.hpp>
+#include <FireDAC.Stan.Def.hpp>
+#include <FireDAC.Stan.Error.hpp>
+#include <FireDAC.Stan.ExprFuncs.hpp>
+#include <FireDAC.Stan.Intf.hpp>
+#include <FireDAC.Stan.Option.hpp>
+#include <FireDAC.Stan.Param.hpp>
+#include <FireDAC.Stan.Pool.hpp>
+#include <FireDAC.UI.Intf.hpp>
+#include <FireDAC.VCLUI.Wait.hpp>
 //---------------------------------------------------------------------------
 class TNotePadFRM : public TForm
 {
@@ -25,16 +46,26 @@ __published:	// IDE-managed Components
 	TMenuItem *N3;
 	TMenuItem *N4;
 	TPanel *Panel2;
-	TPageControl *PageControl1;
-	TFileOpenDialog *FileOpenDialog1;
+	TPageControl *PageControl;
 	TTabSheet *TabSheet1;
 	TTabSheet *TabSheet2;
-	TRichEdit *REDoc1;
-	TRichEdit *REDoc2;
+	TRichEdit *_TabSheet1;
+	TRichEdit *_TabSheet2;
 	TSpeedButton *btnAddDoc;
+	TFDConnection *FDCon;
+	TFDQuery *fdq;
+	TFDPhysSQLiteDriverLink *FDPhysSQLiteDriverLink1;
+	TOpenDialog *od;
+	TSaveDialog *sd;
+	TMenuItem *N5;
+	TMenuItem *N6;
 	void __fastcall ShowFrm(TObject *Sender);
 	void __fastcall FrmRes(TObject *Sender);
 	void __fastcall btnAddDocClick(TObject *Sender);
+	void __fastcall N2Click(TObject *Sender);
+	void __fastcall N4Click(TObject *Sender);
+	void __fastcall N3Click(TObject *Sender);
+	void __fastcall N6Click(TObject *Sender);
 
 private:	// User declarations
 
