@@ -101,16 +101,17 @@ void __fastcall TNotePadFRM::N6Click(TObject *Sender)
 	name = "_"+name;
 	TRichEdit *re = static_cast<TRichEdit*>(FindComponent(name));
 	UnicodeString path;
-	od->Filter = "Изображения bmp|*.bmp";
+	od->Filter = "Изображения jpg|*.jpg";
 	if (od->Execute())
 	{
 		path = od->FileName;
 	}
+	else exit(0);
 	TImage *img = new TImage(this);
 	img->Picture->LoadFromFile(path);
 	img->AutoSize = true;
 	img->Top = re->CaretPos->Y;
-
+	img->Left = re->CaretPos->X;
 	img->Show();
 	img->Parent = re;
 }
