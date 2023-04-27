@@ -7,6 +7,11 @@
 #include "MainForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "RichView"
+#pragma link "RVEdit"
+#pragma link "RVScroll"
+#pragma link "RVStyle"
+#pragma link "RVUniscribeGrIn"
 #pragma resource "*.dfm"
 TNotePadFRM *NotePadFRM;
 //---------------------------------------------------------------------------
@@ -93,7 +98,18 @@ void __fastcall TNotePadFRM::N3Click(TObject *Sender)
 	re->Clear();
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TNotePadFRM::imgClick(TObject *Sender)
+{
+	int x1,y1,x2,y2;
+	x1 = ((TImage*)Sender)->Left;
+	y1 = ((TImage*)Sender)->Top;
+	y2 = ((TImage*)Sender)->Top - ((TImage*)Sender)->Height;
+	x2 = ((TImage*)Sender)->Left - ((TImage*)Sender)->Width;
+	((TImage*)Sender)->Canvas->Pen->Color = clRed;
+	((TImage*)Sender)->Canvas->Pen->Width = 4;
+	((TImage*)Sender)->Canvas->Rectangle(x1,y1,x2,y2);
+}
+//---------------------------------------------------------------------------
 void __fastcall TNotePadFRM::N6Click(TObject *Sender)
 {
 	TTabSheet *tab = PageControl->ActivePage;
@@ -109,8 +125,9 @@ void __fastcall TNotePadFRM::N6Click(TObject *Sender)
 	TImage *img = new TImage(this);
 	img->Picture->LoadFromFile(path);
 	img->AutoSize = true;
-	img->Top = re->CaretPos->Y;
-
+	img->Top = re->CaretPos.Y;
+	img->Left = re->CaretPos.X;
+	img->OnClick = imgClick;
 	img->Show();
 	img->Parent = re;
 }

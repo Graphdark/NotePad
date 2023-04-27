@@ -34,6 +34,12 @@
 #include <FireDAC.Stan.Pool.hpp>
 #include <FireDAC.UI.Intf.hpp>
 #include <FireDAC.VCLUI.Wait.hpp>
+#include "RichView.hpp"
+#include "RVEdit.hpp"
+#include "RVScroll.hpp"
+#include "RVStyle.hpp"
+#include "RVUniscribeGrIn.hpp"
+#include <Vcl.Graphics.hpp>
 //---------------------------------------------------------------------------
 class TNotePadFRM : public TForm
 {
@@ -49,8 +55,6 @@ __published:	// IDE-managed Components
 	TPageControl *PageControl;
 	TTabSheet *TabSheet1;
 	TTabSheet *TabSheet2;
-	TRichEdit *_TabSheet1;
-	TRichEdit *_TabSheet2;
 	TSpeedButton *btnAddDoc;
 	TFDConnection *FDCon;
 	TFDQuery *fdq;
@@ -59,6 +63,9 @@ __published:	// IDE-managed Components
 	TSaveDialog *sd;
 	TMenuItem *N5;
 	TMenuItem *N6;
+	TRichViewEdit *_TabSheet2;
+	TRichViewEdit *_TabSheet1;
+	TRVStyle *RVStyle1;
 	void __fastcall ShowFrm(TObject *Sender);
 	void __fastcall FrmRes(TObject *Sender);
 	void __fastcall btnAddDocClick(TObject *Sender);
@@ -67,8 +74,9 @@ __published:	// IDE-managed Components
 	void __fastcall N3Click(TObject *Sender);
 	void __fastcall N6Click(TObject *Sender);
 
-private:	// User declarations
 
+private:	// User declarations
+	void __fastcall imgClick(TObject *Sender);
 public:		// User declarations
 	__fastcall TNotePadFRM(TComponent* Owner);
 	int getDocNumb() const {return FdocNumb;}
