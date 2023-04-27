@@ -158,9 +158,7 @@ object NotePadFRM: TNotePadFRM
   end
   object FDCon: TFDConnection
     Params.Strings = (
-      'Database=E:\E21\Output_x86\Modules\HelpEditor.ehlp'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 384
     Top = 32
