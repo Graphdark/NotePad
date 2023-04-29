@@ -58,9 +58,6 @@ __published:	// IDE-managed Components
 	TTabSheet *TabSheet1;
 	TTabSheet *TabSheet2;
 	TSpeedButton *btnAddDoc;
-	TFDConnection *FDCon;
-	TFDQuery *fdq;
-	TFDPhysSQLiteDriverLink *FDPhysSQLiteDriverLink1;
 	TOpenDialog *od;
 	TSaveDialog *sd;
 	TMenuItem *N5;

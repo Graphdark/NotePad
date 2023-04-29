@@ -148,24 +148,6 @@ object NotePadFRM: TNotePadFRM
       end
     end
   end
-  object FDCon: TFDConnection
-    Params.Strings = (
-      'Database=E:\Source\NotePad\tmplt.gbdoc'
-      'DriverID=SQLite')
-    Connected = True
-    LoginPrompt = False
-    Left = 392
-    Top = 32
-  end
-  object fdq: TFDQuery
-    Connection = FDCon
-    Left = 456
-    Top = 40
-  end
-  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
-    Left = 264
-    Top = 32
-  end
   object od: TOpenDialog
     Left = 512
     Top = 24

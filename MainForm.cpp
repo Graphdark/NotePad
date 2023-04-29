@@ -57,6 +57,7 @@ void __fastcall TNotePadFRM::N2Click(TObject *Sender)
 	if (od->Execute())
 	{
 		path = od->FileName;
+		setPath(path);
 	}
 	else
 	{
@@ -65,14 +66,9 @@ void __fastcall TNotePadFRM::N2Click(TObject *Sender)
 	TTabSheet *tab = PageControl->ActivePage;
 	UnicodeString name = tab->Name;
 	name = "_"+name;
-	FDCon->Params->DriverID = "SQLite";
-	FDCon->Params->Database = path;
-	FDCon->Connected = true;
-	fdq->Open("select page from content");
-	TRichEdit *re = static_cast<TRichEdit*>(FindComponent(name));
-	UnicodeString page = fdq->FieldByName("Page")->AsString;
-	re->Lines->Add(page);
-
+	TRichViewEdit *re = static_cast<TRichViewEdit*>(FindComponent(name));
+	re->LoadRVF(path);
+	re->Update();
 }
 //---------------------------------------------------------------------------
 
@@ -86,13 +82,15 @@ void __fastcall TNotePadFRM::N4Click(TObject *Sender)
 	UnicodeString path = getPath();
 	if (path.Trim().Length() == 0)
 	{
-		if (od->Execute())
+		sd->Filter = "Документ gbdoc|*.gbdoc";
+		sd->DefaultExt = "gbdoc";
+		if (sd->Execute())
 		{
-			setPath(od->FileName);
+			setPath(sd->FileName);
 			path = getPath();
 		}
 	}
-	re->SaveDocX(path,false);
+	re->SaveRVF(path,false);
 }
 //---------------------------------------------------------------------------
 
@@ -101,8 +99,8 @@ void __fastcall TNotePadFRM::N3Click(TObject *Sender)
 	TTabSheet *tab = PageControl->ActivePage;
 	UnicodeString name = tab->Name;
 	name = "_"+name;
-	TRichEdit *re = static_cast<TRichEdit*>(FindComponent(name));
-	re->Clear();
+	TRichViewEdit *re = static_cast<TRichViewEdit*>(FindComponent(name));
+	tab->Free();
 }
 //---------------------------------------------------------------------------
 void __fastcall TNotePadFRM::N6Click(TObject *Sender)
