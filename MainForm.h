@@ -40,10 +40,12 @@
 #include "RVStyle.hpp"
 #include "RVUniscribeGrIn.hpp"
 #include <Vcl.Graphics.hpp>
+#include "DBRV.hpp"
 //---------------------------------------------------------------------------
 class TNotePadFRM : public TForm
 {
 	int FdocNumb = 3;
+	UnicodeString FPath = "";
 __published:	// IDE-managed Components
 	TPanel *Panel1;
 	TMainMenu *MainMenu1;
@@ -63,9 +65,9 @@ __published:	// IDE-managed Components
 	TSaveDialog *sd;
 	TMenuItem *N5;
 	TMenuItem *N6;
-	TRichViewEdit *_TabSheet2;
 	TRichViewEdit *_TabSheet1;
 	TRVStyle *RVStyle1;
+	TRichViewEdit *_TabSheet2;
 	void __fastcall ShowFrm(TObject *Sender);
 	void __fastcall FrmRes(TObject *Sender);
 	void __fastcall btnAddDocClick(TObject *Sender);
@@ -75,11 +77,13 @@ __published:	// IDE-managed Components
 	void __fastcall N6Click(TObject *Sender);
 
 
+
 private:	// User declarations
-	void __fastcall imgClick(TObject *Sender);
 public:		// User declarations
 	__fastcall TNotePadFRM(TComponent* Owner);
 	int getDocNumb() const {return FdocNumb;}
+	UnicodeString getPath() const {return FPath;}
+	void setPath(UnicodeString path) {FPath = path;}
 	int __property DocNumb = {read = getDocNumb, write = FdocNumb};
 };
 //---------------------------------------------------------------------------

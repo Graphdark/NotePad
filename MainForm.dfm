@@ -100,10 +100,6 @@ object NotePadFRM: TNotePadFRM
           RTFReadProperties.ParaStyleMode = rvrsAddIfNeeded
           RVFOptions = [rvfoSavePicturesBody, rvfoSaveControlsBody, rvfoSaveBinary, rvfoSaveTextStyles, rvfoSaveParaStyles, rvfoSaveDocProperties, rvfoLoadDocProperties, rvfoSaveDocObjects, rvfoLoadDocObjects]
           Style = RVStyle1
-          ExplicitLeft = 280
-          ExplicitTop = 88
-          ExplicitWidth = 100
-          ExplicitHeight = 40
         end
       end
       object TabSheet2: TTabSheet
@@ -122,10 +118,6 @@ object NotePadFRM: TNotePadFRM
           RTFReadProperties.ParaStyleMode = rvrsAddIfNeeded
           RVFOptions = [rvfoSavePicturesBody, rvfoSaveControlsBody, rvfoSaveBinary, rvfoSaveTextStyles, rvfoSaveParaStyles, rvfoSaveDocProperties, rvfoLoadDocProperties, rvfoSaveDocObjects, rvfoLoadDocObjects]
           Style = RVStyle1
-          ExplicitLeft = 392
-          ExplicitTop = 72
-          ExplicitWidth = 100
-          ExplicitHeight = 40
         end
       end
     end
@@ -158,9 +150,11 @@ object NotePadFRM: TNotePadFRM
   end
   object FDCon: TFDConnection
     Params.Strings = (
+      'Database=E:\Source\NotePad\tmplt.gbdoc'
       'DriverID=SQLite')
+    Connected = True
     LoginPrompt = False
-    Left = 384
+    Left = 392
     Top = 32
   end
   object fdq: TFDQuery

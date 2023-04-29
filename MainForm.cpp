@@ -3,6 +3,7 @@
 #include <vcl.h>
 #pragma hdrstop
 #include<stdlib.h>
+#include<Clipbrd.hpp>
 
 #include "MainForm.h"
 //---------------------------------------------------------------------------
@@ -12,6 +13,7 @@
 #pragma link "RVScroll"
 #pragma link "RVStyle"
 #pragma link "RVUniscribeGrIn"
+#pragma link "DBRV"
 #pragma resource "*.dfm"
 TNotePadFRM *NotePadFRM;
 //---------------------------------------------------------------------------
@@ -40,11 +42,12 @@ void __fastcall TNotePadFRM::btnAddDocClick(TObject *Sender)
 	tab->Caption = "Doc" + IntToStr(DocNumb);
 	tab->Name = "Doc" + IntToStr(DocNumb);
 	DocNumb = DocNumb+1;
-	TRichEdit *re = new TRichEdit(this);
+	TRichViewEdit *re = new TRichViewEdit(this);
 	re->Parent = tab;
+	re->Style = RVStyle1;
 	re->Align = alClient;
 	re->Name = "_TabSheet" + IntToStr(DocNumb);
-    re->Clear();
+	re->Clear();
 }
 //---------------------------------------------------------------------------
 void __fastcall TNotePadFRM::N2Click(TObject *Sender)
@@ -79,13 +82,17 @@ void __fastcall TNotePadFRM::N4Click(TObject *Sender)
 	TTabSheet *tab = PageControl->ActivePage;
 	UnicodeString name = tab->Name;
 	name = "_"+name;
-	TRichEdit *re = static_cast<TRichEdit*>(FindComponent(name));
-	UnicodeString page;
-	for (int i = 0; i < re->Lines->Count; i++)
+	TRichViewEdit *re = static_cast<TRichViewEdit*>(FindComponent(name));
+	UnicodeString path = getPath();
+	if (path.Trim().Length() == 0)
 	{
-		page = page + re->Lines->Strings[i] + "\n";
+		if (od->Execute())
+		{
+			setPath(od->FileName);
+			path = getPath();
+		}
 	}
-	fdq->ExecSQL("update content set page = " + QuotedStr(page) + " where id = 1");
+	re->SaveDocX(path,false);
 }
 //---------------------------------------------------------------------------
 
@@ -96,18 +103,6 @@ void __fastcall TNotePadFRM::N3Click(TObject *Sender)
 	name = "_"+name;
 	TRichEdit *re = static_cast<TRichEdit*>(FindComponent(name));
 	re->Clear();
-}
-//---------------------------------------------------------------------------
-void __fastcall TNotePadFRM::imgClick(TObject *Sender)
-{
-	int x1,y1,x2,y2;
-	x1 = ((TImage*)Sender)->Left;
-	y1 = ((TImage*)Sender)->Top;
-	y2 = ((TImage*)Sender)->Top - ((TImage*)Sender)->Height;
-	x2 = ((TImage*)Sender)->Left - ((TImage*)Sender)->Width;
-	((TImage*)Sender)->Canvas->Pen->Color = clRed;
-	((TImage*)Sender)->Canvas->Pen->Width = 4;
-	((TImage*)Sender)->Canvas->Rectangle(x1,y1,x2,y2);
 }
 //---------------------------------------------------------------------------
 void __fastcall TNotePadFRM::N6Click(TObject *Sender)
@@ -127,9 +122,7 @@ void __fastcall TNotePadFRM::N6Click(TObject *Sender)
 	img->AutoSize = true;
 	img->Top = re->CaretPos.Y;
 	img->Left = re->CaretPos.X;
-	img->OnClick = imgClick;
 	img->Show();
 	img->Parent = re;
 }
 //---------------------------------------------------------------------------
-
