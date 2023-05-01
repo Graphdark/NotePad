@@ -41,6 +41,8 @@
 #include "RVUniscribeGrIn.hpp"
 #include <Vcl.Graphics.hpp>
 #include "DBRV.hpp"
+#include <FrmUser.h>
+#include <TaskFrm.h>
 //---------------------------------------------------------------------------
 class TNotePadFRM : public TForm
 {
@@ -65,6 +67,9 @@ __published:	// IDE-managed Components
 	TRichViewEdit *_TabSheet1;
 	TRVStyle *RVStyle1;
 	TRichViewEdit *_TabSheet2;
+	TFDConnection *FDCon;
+	TSpeedButton *UserBtn;
+	TSpeedButton *Task;
 	void __fastcall ShowFrm(TObject *Sender);
 	void __fastcall FrmRes(TObject *Sender);
 	void __fastcall btnAddDocClick(TObject *Sender);
@@ -72,6 +77,8 @@ __published:	// IDE-managed Components
 	void __fastcall N4Click(TObject *Sender);
 	void __fastcall N3Click(TObject *Sender);
 	void __fastcall N6Click(TObject *Sender);
+	void __fastcall UserBtnClick(TObject *Sender);
+	void __fastcall TaskClick(TObject *Sender);
 
 
 

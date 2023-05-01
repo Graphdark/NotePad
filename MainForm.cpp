@@ -124,3 +124,16 @@ void __fastcall TNotePadFRM::N6Click(TObject *Sender)
 	img->Parent = re;
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TNotePadFRM::UserBtnClick(TObject *Sender)
+{
+	UserFrm->ShowModal();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TNotePadFRM::TaskClick(TObject *Sender)
+{
+    FrmTask->ShowModal();
+}
+//---------------------------------------------------------------------------
+
