@@ -29,6 +29,8 @@
 #include <Vcl.DBCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Graphics.hpp>
+#include <Vcl.DBGrids.hpp>
+#include <Vcl.Grids.hpp>
 //---------------------------------------------------------------------------
 class TFrmTask : public TForm
 {
@@ -40,11 +42,17 @@ __published:	// IDE-managed Components
 	TLabel *Label1;
 	TDBComboBox *ExecBox;
 	TLabel *Label2;
-	TTreeView *TreeView1;
+	TTreeView *TaskTree;
 	TFDQuery *FDQ;
 	TButton *AddBtn;
 	TButton *EdBtn;
 	TButton *DelBtn;
+	TFDQuery *FDQSubTask;
+	TDBGrid *DBGrid1;
+	TDataSource *DataSource1;
+	TDBGrid *DBGrid2;
+	TDataSource *DataSource2;
+	void __fastcall FrmShow(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TFrmTask(TComponent* Owner);

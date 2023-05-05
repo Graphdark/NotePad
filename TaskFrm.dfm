@@ -11,6 +11,7 @@ object FrmTask: TFrmTask
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnShow = FrmShow
   DesignSize = (
     635
     340)
@@ -23,7 +24,6 @@ object FrmTask: TFrmTask
     Height = 340
     Align = alLeft
     TabOrder = 0
-    ExplicitLeft = -6
     DesignSize = (
       315
       340)
@@ -57,6 +57,8 @@ object FrmTask: TFrmTask
       RTFReadProperties.ParaStyleMode = rvrsAddIfNeeded
       RVFOptions = [rvfoSavePicturesBody, rvfoSaveControlsBody, rvfoSaveBinary, rvfoSaveTextStyles, rvfoSaveParaStyles, rvfoSaveDocProperties, rvfoLoadDocProperties, rvfoSaveDocObjects, rvfoLoadDocObjects]
       Style = RVStyle1
+      ExplicitLeft = -4
+      ExplicitTop = 29
     end
     object UserBox: TDBComboBox
       Left = 164
@@ -77,6 +79,32 @@ object FrmTask: TFrmTask
       Caption = #1057#1086#1079#1076#1072#1090#1100
       TabOrder = 2
     end
+    object DBGrid1: TDBGrid
+      Left = -5
+      Top = 64
+      Width = 320
+      Height = 120
+      DataSource = DataSource1
+      TabOrder = 3
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+    end
+    object DBGrid2: TDBGrid
+      Left = 0
+      Top = 184
+      Width = 320
+      Height = 120
+      DataSource = DataSource2
+      TabOrder = 4
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+    end
   end
   object ExecBox: TDBComboBox
     Left = 164
@@ -88,7 +116,7 @@ object FrmTask: TFrmTask
     DataSource = UserFrm.ds
     TabOrder = 1
   end
-  object TreeView1: TTreeView
+  object TaskTree: TTreeView
     Left = 315
     Top = 0
     Width = 320
@@ -99,10 +127,6 @@ object FrmTask: TFrmTask
     Items.NodeData = {
       03010000002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
       000000000001071704300434043004470438043A00}
-    ExplicitLeft = 496
-    ExplicitTop = 168
-    ExplicitWidth = 121
-    ExplicitHeight = 97
   end
   object EdBtn: TButton
     Left = 95
@@ -320,8 +344,23 @@ object FrmTask: TFrmTask
     Top = 160
   end
   object FDQ: TFDQuery
-    Connection = UserFrm.FDCon
+    Connection = NotePadFRM.FDCon
     Left = 464
     Top = 216
+  end
+  object FDQSubTask: TFDQuery
+    Connection = NotePadFRM.FDCon
+    Left = 520
+    Top = 216
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQ
+    Left = 312
+    Top = 176
+  end
+  object DataSource2: TDataSource
+    DataSet = FDQSubTask
+    Left = 320
+    Top = 184
   end
 end

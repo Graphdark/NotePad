@@ -21,8 +21,8 @@ void __fastcall TUserFrm::showFrm(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TUserFrm::GridUserCellClick(TColumn *Column)
 {
-	EdUser->Text = GridUser->DataSource->DataSet->FieldByName("Author")->AsString;
-	EdMail->Text = GridUser->DataSource->DataSet->FieldByName("Mail")->AsString;
+	EdUser->Text = GridUser->DataSource->DataSet->FieldByName("author")->AsString;
+	EdMail->Text = GridUser->DataSource->DataSet->FieldByName("mail")->AsString;
 }
 //---------------------------------------------------------------------------
 

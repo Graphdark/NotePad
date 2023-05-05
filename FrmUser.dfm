@@ -105,17 +105,9 @@
     TabOrder = 5
     OnClick = DelBtnClick
   end
-  object FDCon: TFDConnection
-    Params.Strings = (
-      'Database=E:\Source\NotePad\TaskTrack'
-      'LockingMode=Normal'
-      'DriverID=SQLite')
-    LoginPrompt = False
-    Left = 8
-    Top = 240
-  end
   object FDQ: TFDQuery
-    Connection = FDCon
+    Active = True
+    Connection = NotePadFRM.FDCon
     SQL.Strings = (
       'select * from AuthorTable')
     Left = 8

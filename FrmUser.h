@@ -31,6 +31,7 @@
 #include <Vcl.DBGrids.hpp>
 #include <Vcl.Grids.hpp>
 #include <StrUtils.hpp>
+#include<mainform.h>
 
 //---------------------------------------------------------------------------
 class TUserFrm : public TForm
@@ -44,7 +45,6 @@ __published:	// IDE-managed Components
 	TButton *AddBtn;
 	TButton *EdBtn;
 	TButton *DelBtn;
-	TFDConnection *FDCon;
 	TFDQuery *FDQ;
 	TDataSource *ds;
 	void __fastcall showFrm(TObject *Sender);
