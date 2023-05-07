@@ -2,9 +2,11 @@ object FrmTask: TFrmTask
   Left = 0
   Top = 0
   Caption = #1047#1072#1076#1072#1095#1080
-  ClientHeight = 340
-  ClientWidth = 635
+  ClientHeight = 588
+  ClientWidth = 1114
   Color = clBtnFace
+  Constraints.MinHeight = 380
+  Constraints.MinWidth = 650
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -12,139 +14,168 @@ object FrmTask: TFrmTask
   Font.Style = []
   OldCreateOrder = False
   OnShow = FrmShow
-  DesignSize = (
-    635
-    340)
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 315
-    Height = 340
-    Align = alLeft
+    Width = 795
+    Height = 547
+    Align = alClient
     TabOrder = 0
-    DesignSize = (
-      315
-      340)
-    object Label1: TLabel
-      Left = 8
-      Top = 250
-      Width = 31
-      Height = 13
-      Anchors = [akLeft, akTop, akBottom]
-      Caption = #1040#1074#1090#1086#1088
+    ExplicitWidth = 315
+    ExplicitHeight = 300
+    object Panel3: TPanel
+      Left = 1
+      Top = 420
+      Width = 793
+      Height = 126
+      Align = alBottom
+      TabOrder = 0
+      ExplicitTop = 224
+      ExplicitWidth = 313
+      DesignSize = (
+        793
+        126)
+      object Label1: TLabel
+        Left = 8
+        Top = 43
+        Width = 31
+        Height = 41
+        Anchors = [akLeft, akTop, akBottom]
+        Caption = #1040#1074#1090#1086#1088
+        ExplicitHeight = 13
+      end
+      object Label2: TLabel
+        Left = 9
+        Top = 100
+        Width = 36
+        Height = 13
+        Anchors = [akLeft, akTop, akBottom]
+        Caption = 'C'#1090#1072#1090#1091#1089
+      end
+      object Label3: TLabel
+        Left = 9
+        Top = 10
+        Width = 48
+        Height = 13
+        Caption = #1053#1072#1079#1074#1072#1085#1080#1077
+      end
+      object Label4: TLabel
+        Left = 8
+        Top = 71
+        Width = 66
+        Height = 13
+        Caption = #1048#1089#1087#1086#1083#1085#1080#1090#1077#1083#1100
+      end
+      object EdCaption: TEdit
+        Left = 129
+        Top = 9
+        Width = 145
+        Height = 21
+        TabOrder = 0
+      end
+      object UserBox: TDBLookupComboBox
+        Left = 129
+        Top = 39
+        Width = 145
+        Height = 21
+        KeyField = 'id'
+        ListField = 'author'
+        ListSource = UserFrm.ds
+        TabOrder = 1
+      end
+      object ExecBox: TDBLookupComboBox
+        Left = 129
+        Top = 66
+        Width = 145
+        Height = 21
+        KeyField = 'id'
+        ListField = 'author'
+        ListSource = dsExec
+        TabOrder = 2
+      end
+      object StateBox: TDBLookupComboBox
+        Left = 129
+        Top = 95
+        Width = 145
+        Height = 21
+        KeyField = 'id'
+        ListField = 'state'
+        ListSource = dsState
+        TabOrder = 3
+      end
     end
-    object Label2: TLabel
-      Left = 8
-      Top = 275
-      Width = 66
-      Height = 13
-      Anchors = [akLeft, akTop, akBottom]
-      Caption = #1048#1089#1087#1086#1083#1085#1080#1090#1077#1083#1100
-    end
-    object RichViewEdit1: TRichViewEdit
+    object dbre: TDBRichViewEdit
       Left = 1
       Top = 1
-      Width = 313
-      Height = 240
+      Width = 793
+      Height = 419
+      DataField = 'Task'
+      DataSource = ds
       ReadOnly = False
-      Align = alTop
-      Anchors = [akLeft, akTop, akRight, akBottom]
-      TabOrder = 0
+      Align = alClient
+      TabOrder = 1
       DoInPaletteMode = rvpaCreateCopies
       RTFReadProperties.TextStyleMode = rvrsAddIfNeeded
       RTFReadProperties.ParaStyleMode = rvrsAddIfNeeded
       RVFOptions = [rvfoSavePicturesBody, rvfoSaveControlsBody, rvfoSaveBinary, rvfoSaveTextStyles, rvfoSaveParaStyles, rvfoSaveDocProperties, rvfoLoadDocProperties, rvfoSaveDocObjects, rvfoLoadDocObjects]
       Style = RVStyle1
-      ExplicitLeft = -4
-      ExplicitTop = 29
+      ExplicitWidth = 313
+      ExplicitHeight = 224
     end
-    object UserBox: TDBComboBox
-      Left = 164
-      Top = 247
-      Width = 145
-      Height = 21
-      Anchors = [akLeft, akTop, akBottom]
-      DataField = 'author'
-      DataSource = UserFrm.ds
-      TabOrder = 1
-    end
-    object AddBtn: TButton
-      Left = 8
-      Top = 310
-      Width = 75
-      Height = 25
-      Anchors = [akLeft, akTop, akBottom]
-      Caption = #1057#1086#1079#1076#1072#1090#1100
-      TabOrder = 2
-    end
-    object DBGrid1: TDBGrid
-      Left = -5
-      Top = 64
-      Width = 320
-      Height = 120
-      DataSource = DataSource1
-      TabOrder = 3
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-    end
-    object DBGrid2: TDBGrid
-      Left = 0
-      Top = 184
-      Width = 320
-      Height = 120
-      DataSource = DataSource2
-      TabOrder = 4
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-    end
-  end
-  object ExecBox: TDBComboBox
-    Left = 164
-    Top = 272
-    Width = 145
-    Height = 21
-    Anchors = [akLeft, akTop, akBottom]
-    DataField = 'author'
-    DataSource = UserFrm.ds
-    TabOrder = 1
   end
   object TaskTree: TTreeView
-    Left = 315
+    Left = 795
     Top = 0
-    Width = 320
-    Height = 340
-    Align = alClient
+    Width = 319
+    Height = 547
+    Align = alRight
     Indent = 19
-    TabOrder = 2
+    ReadOnly = True
+    TabOrder = 1
+    OnClick = SelItem
     Items.NodeData = {
       03010000002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
       000000000001071704300434043004470438043A00}
+    ExplicitLeft = 315
+    ExplicitHeight = 300
   end
-  object EdBtn: TButton
-    Left = 95
-    Top = 310
-    Width = 90
-    Height = 25
-    Anchors = [akLeft, akTop, akBottom]
-    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
-    TabOrder = 3
-  end
-  object DelBtn: TButton
-    Left = 206
-    Top = 310
-    Width = 75
-    Height = 25
-    Anchors = [akLeft, akTop, akBottom]
-    Caption = #1059#1076#1072#1083#1080#1090#1100
-    TabOrder = 4
+  object Panel2: TPanel
+    Left = 0
+    Top = 547
+    Width = 1114
+    Height = 41
+    Align = alBottom
+    TabOrder = 2
+    ExplicitTop = 300
+    ExplicitWidth = 634
+    object EdBtn: TButton
+      Left = 95
+      Top = 9
+      Width = 90
+      Height = 25
+      Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
+      TabOrder = 0
+      OnClick = EdBtnClick
+    end
+    object DelBtn: TButton
+      Left = 200
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = #1059#1076#1072#1083#1080#1090#1100
+      TabOrder = 1
+    end
+    object AddBtn: TButton
+      Left = 10
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = #1057#1086#1079#1076#1072#1090#1100
+      TabOrder = 2
+      OnClick = AddBtnClick
+    end
   end
   object RVStyle1: TRVStyle
     FieldHighlightType = rvfhCurrent
@@ -353,14 +384,44 @@ object FrmTask: TFrmTask
     Left = 520
     Top = 216
   end
-  object DataSource1: TDataSource
-    DataSet = FDQ
-    Left = 312
-    Top = 176
+  object FDTable: TFDTable
+    Active = True
+    IndexFieldNames = 'id'
+    Connection = NotePadFRM.FDCon
+    UpdateOptions.UpdateTableName = 'Task'
+    TableName = 'Task'
+    Left = 400
+    Top = 232
   end
-  object DataSource2: TDataSource
-    DataSet = FDQSubTask
-    Left = 320
-    Top = 184
+  object ds: TDataSource
+    DataSet = FDTable
+    Left = 352
+    Top = 240
+  end
+  object FDQState: TFDQuery
+    Active = True
+    Connection = NotePadFRM.FDCon
+    SQL.Strings = (
+      'select * from stateTable')
+    Left = 464
+    Top = 264
+  end
+  object dsState: TDataSource
+    DataSet = FDQState
+    Left = 352
+    Top = 288
+  end
+  object dsExec: TDataSource
+    DataSet = FDQExec
+    Left = 352
+    Top = 192
+  end
+  object FDQExec: TFDQuery
+    Active = True
+    Connection = NotePadFRM.FDCon
+    SQL.Strings = (
+      'select * from authorTable')
+    Left = 464
+    Top = 168
   end
 end

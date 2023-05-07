@@ -442,6 +442,7 @@ object NotePadFRM: TNotePadFRM
   object FDCon: TFDConnection
     Params.Strings = (
       'Database=E:\Source\NotePad\Win32\Debug\TaskTrack'
+      'LockingMode=Normal'
       'DriverID=SQLite')
     Connected = True
     LoginPrompt = False
